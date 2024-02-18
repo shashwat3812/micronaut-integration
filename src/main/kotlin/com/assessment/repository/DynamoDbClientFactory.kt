@@ -18,7 +18,7 @@ class DynamoDbClientFactory {
         return DynamoDbClient.builder()
             .region(region)
             .credentialsProvider { credentials }
-            .endpointOverride(URI("http://localhost:4566"))
+            .endpointOverride(URI("http://localhost.localstack.cloud:4566"))
             .build()
     }
 }

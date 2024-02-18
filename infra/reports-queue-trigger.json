@@ -1,0 +1,4 @@
+{
+  "FunctionName": "arn:aws:lambda:us-east-1:000000000000:function:syncReports",
+  "EventSourceArn": "arn:aws:sqs:us-east-1:000000000000:reports-queue"
+}
