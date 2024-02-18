@@ -1,7 +1,5 @@
 package com.assessment.controller
 
-import com.assessment.service.XeroAuthService
-import com.assessment.service.XeroReportService
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
