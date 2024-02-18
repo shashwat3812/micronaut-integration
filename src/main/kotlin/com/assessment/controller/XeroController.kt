@@ -1,5 +1,6 @@
 package com.assessment.controller
 
+import com.assessment.aws.SQSService
 import com.assessment.errors.XeroAuthException
 import com.assessment.errors.XeroGetReportsException
 import com.assessment.service.XeroAuthService
@@ -14,7 +15,7 @@ import io.micronaut.scheduling.annotation.ExecuteOn
 
 @Controller("/reports")
 @ExecuteOn(TaskExecutors.BLOCKING)
-class XeroController(private val xeroAuthService: XeroAuthService, private val xeroReportService: XeroReportService) {
+class XeroController(private val xeroAuthService: XeroAuthService, private val xeroReportService: XeroReportService, private val queueService: SQSService) {
 
     @Get("/executive-summary")
     @Produces(MediaType.TEXT_PLAIN)
@@ -23,6 +24,10 @@ class XeroController(private val xeroAuthService: XeroAuthService, private val x
             val accessToken = xeroAuthService.getAuthToken()
 
             val report = xeroReportService.getExecutiveSummaryReport(accessToken)
+
+            println("Attempting to send the report to queue: $report")
+
+            queueService.sendMessage(report)
 
             return HttpResponse.ok(report)
         } catch (e: XeroAuthException) {

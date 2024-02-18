@@ -1,4 +1,4 @@
-package com.assessment.repository
+package com.assessment.config
 
 import io.micronaut.context.annotation.ConfigurationProperties
 import io.micronaut.context.annotation.Requires
