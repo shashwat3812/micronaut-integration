@@ -1,4 +1,4 @@
-package com.assessment.repository
+package com.assessment.aws
 
 import com.assessment.config.DynamoConfiguration
 import com.assessment.entity.Entity
@@ -11,7 +11,7 @@ import software.amazon.awssdk.services.dynamodb.model.ResourceNotFoundException
 @Singleton
 @Requires(beans = [DynamoDbClient::class, DynamoConfiguration::class ])
 @Primary
-open class DynamoRepository<T: Entity>(
+open class DynamoService<T: Entity>(
     internal val dynamoDbClient: DynamoDbClient,
     internal val dynamoConfiguration: DynamoConfiguration
 ) {

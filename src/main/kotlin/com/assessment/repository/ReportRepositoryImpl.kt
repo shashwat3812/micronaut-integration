@@ -1,5 +1,7 @@
 package com.assessment.repository
 
+
+import com.assessment.aws.DynamoService
 import com.assessment.config.DynamoConfiguration
 import com.assessment.entity.ReportEntity
 import jakarta.inject.Singleton
@@ -12,7 +14,7 @@ import software.amazon.awssdk.services.dynamodb.model.PutItemResponse
 class ReportRepositoryImpl(
     dynamoDbClient: DynamoDbClient,
     dynamoConfiguration: DynamoConfiguration
-) : DynamoRepository<ReportEntity>(dynamoDbClient, dynamoConfiguration), ReportsRepository {
+) : DynamoService<ReportEntity>(dynamoDbClient, dynamoConfiguration), ReportsRepository {
 
     protected val PARTITION_KEY = "pk"
     override fun save(reportJsonString: String): String {

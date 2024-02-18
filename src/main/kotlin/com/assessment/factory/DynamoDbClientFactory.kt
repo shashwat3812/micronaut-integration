@@ -1,4 +1,4 @@
-package com.assessment.repository
+package com.assessment.factory
 
 import io.micronaut.context.annotation.Bean
 import io.micronaut.context.annotation.Factory
