@@ -1,5 +1,6 @@
 package com.assessment.repository
 
+import com.assessment.config.DynamoConfiguration
 import com.assessment.entity.ReportEntity
 import jakarta.inject.Singleton
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
