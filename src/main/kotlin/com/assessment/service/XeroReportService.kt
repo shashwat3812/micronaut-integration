@@ -1,5 +1,6 @@
 package com.assessment.service
 
+import com.assessment.errors.XeroGetReportsException
 import com.assessment.http.XeroApiClient
 import jakarta.inject.Singleton
 
@@ -7,11 +8,16 @@ import jakarta.inject.Singleton
 class XeroReportService(private val xeroApiClient: XeroApiClient) {
 
     fun getExecutiveSummaryReport(accessToken: String): String {
-        val getRequestAuth = StringBuilder()
-            .append("Bearer ")
-            .append(accessToken).toString()
+        try {
+            val getRequestAuth = StringBuilder()
+                .append("Bearer ")
+                .append(accessToken).toString()
 
-        val report = xeroApiClient.getExecutiveSummaryReportAsString(getRequestAuth)
-        return report
+
+            val report = xeroApiClient.getExecutiveSummaryReportAsString(getRequestAuth)
+            return report
+        } catch (e: Exception) {
+            throw XeroGetReportsException("Error while fetching ExecutiveSummary report from Xero")
+        }
     }
 }
