@@ -5,5 +5,5 @@ import jakarta.validation.constraints.NotBlank
 
 interface ReportsRepository {
     @NonNull
-    fun save(@NonNull @NotBlank isbn: String, @NonNull @NotBlank name: String): String
+    fun save(@NonNull @NotBlank reportJsonString: String): String
 }

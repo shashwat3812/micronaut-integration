@@ -5,7 +5,7 @@ import com.assessment.repository.ReportsRepository
 import io.micronaut.function.aws.MicronautRequestHandler
 import jakarta.inject.Inject
 
-class SyncReports: MicronautRequestHandler<SQSEvent, Unit>() {
+class SyncReports : MicronautRequestHandler<SQSEvent, Unit>() {
 
     @Inject
     lateinit var reportsRepository: ReportsRepository
@@ -17,14 +17,11 @@ class SyncReports: MicronautRequestHandler<SQSEvent, Unit>() {
                 for (record in input.records) {
                     val body = record.body
                     println("Message body $body")
+                    val response = reportsRepository.save(body)
+                    println(response)
                 }
             }
 
-            println("Repository is $reportsRepository")
-
-            val response = reportsRepository.save("Lambda ISBN", "Lambda Name")
-
-            println(response)
         } catch (e: Error) {
             println("####### ERROR ####### is $e")
         }
