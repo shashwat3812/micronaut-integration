@@ -23,24 +23,21 @@ Run the following commands to build the application
 ```
     Command to install the dependencies
  1. mvn clean install
- 
-    Command to build the jar
- 2. ./mvnw package
 
     Command to run the api
- 3. ./mvnw mn:run
+ 2. mvn mn:run
 
 ```
 
 ### LocalStack Infra Setup
 
-Firstly, install localstack. Go through this documentation to install the localstack
+Firstly, install localstack and AWS local CLI. Refer documentation below
 
-https://docs.localstack.cloud/getting-started/installation/
+- https://docs.localstack.cloud/getting-started/installation/
+- https://github.com/localstack/awscli-local
 
-
-
-After localstack installation, Run the following commands in the given order to setup the infrastructure of the application
+After installation, Run the following commands in the given order to setup the infrastructure of the
+application
 
 ```
 
@@ -70,7 +67,9 @@ After creating the resources on the local stack, run the following command
 curl http://localhost:8080/reports/executive-summary
 ```
 
-After running the above command, run the following command to see the save report in dynamodb table
+After running the above command, run the following command to see the save report in dynamodb table (*it might take a
+few
+seconds to reflect in the database*)
 
 ```
 awslocal dynamodb scan --table-name reports
