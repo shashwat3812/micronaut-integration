@@ -15,7 +15,11 @@ import io.micronaut.scheduling.annotation.ExecuteOn
 
 @Controller("/reports")
 @ExecuteOn(TaskExecutors.BLOCKING)
-class XeroController(private val xeroAuthService: XeroAuthService, private val xeroReportService: XeroReportService, private val queueService: SQSService) {
+class XeroController(
+    private val xeroAuthService: XeroAuthService,
+    private val xeroReportService: XeroReportService,
+    private val queueService: SQSService
+) {
 
     @Get("/executive-summary")
     @Produces(MediaType.TEXT_PLAIN)
@@ -34,6 +38,10 @@ class XeroController(private val xeroAuthService: XeroAuthService, private val x
             return HttpResponse.serverError(e.message)
         } catch (e: XeroGetReportsException) {
             return HttpResponse.serverError(e.message)
+        } catch (e: Exception) {
+            println(e.message)
+            return HttpResponse.serverError("Server error while processing reports")
         }
+
     }
 }
