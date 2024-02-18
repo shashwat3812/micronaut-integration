@@ -1,36 +1,19 @@
-## Micronaut 4.3.2 Documentation
+## Micronaut Kotlin App with Xero Integration
 
-- [User Guide](https://docs.micronaut.io/4.3.2/guide/index.html)
-- [API Reference](https://docs.micronaut.io/4.3.2/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/4.3.2/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
----
+The app integrates with Xero using a Custom Connections app linked to the Demo organization.
 
-- [Micronaut Maven Plugin documentation](https://micronaut-projects.github.io/micronaut-maven-plugin/latest/)
-## Feature micronaut-aot documentation
+### Xero Integration
 
-- [Micronaut AOT documentation](https://micronaut-projects.github.io/micronaut-aot/latest/guide/)
+- The app authenticates with Xero based on client_credential grant type based on
+  OAuth2 ([API reference](https://developer.xero.com/documentation/guides/oauth2/custom-connections))
+- Xero integration is done for ExecutiveSummary report ([API
+  reference](https://developer.xero.com/documentation/api/accounting/reports/#executive-summary))
 
+### Tech Stack
 
-## Feature serialization-jackson documentation
+- Micronaut version - 4.3.2
+- Kotlin version - 1.9.22
+- JDK version - 17
 
-- [Micronaut Serialization Jackson Core documentation](https://micronaut-projects.github.io/micronaut-serialization/latest/guide/)
-
-
-## Feature kapt documentation
-
-- [Micronaut Kotlin Annotation Processing (KAPT) documentation](https://docs.micronaut.io/snapshot/guide/#kapt)
-
-- [https://kotlinlang.org/docs/kapt.html](https://kotlinlang.org/docs/kapt.html)
-
-
-## Feature maven-enforcer-plugin documentation
-
-- [https://maven.apache.org/enforcer/maven-enforcer-plugin/](https://maven.apache.org/enforcer/maven-enforcer-plugin/)
-
-
-## Feature http-client documentation
-
-- [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#nettyHttpClient)
-
+### Execution
 
